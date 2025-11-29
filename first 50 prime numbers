@@ -1,0 +1,36 @@
+fun main() {
+    // Function to check if a number is prime
+    fun isPrime(num: Int): Boolean {
+        if (num < 2) return false
+        for (i in 2..Math.sqrt(num.toDouble()).toInt()) {
+            if (num % i == 0) return false
+        }
+        return true
+    }
+
+    val primes = mutableListOf<Int>()
+    var number = 2
+
+    while (primes.size < 50) {
+        if (isPrime(number)) {
+            primes.add(number)
+        }
+        number++
+    }
+
+    println("First 50 Prime Numbers:")
+    println(primes)
+
+    val evens = mutableListOf<Int>()
+    var even = 2
+
+    while (evens.size < 50) {
+        evens.add(even)
+        even += 2
+    }
+
+    primes.addAll(evens)
+
+    println("\nCombined List (Primes + Evens):")
+    println(primes)
+}
